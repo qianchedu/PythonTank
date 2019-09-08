@@ -44,12 +44,44 @@ class MainGame():
         while True:
             #给窗口背景设置填充色
             MainGame.window.fill(BG_COLOR)
+            self.getEvent()
             pygame.display.update()
+
 
 
     #结束游戏
     def endGame(self):
-        pass
+        print('谢谢使用')
+        exit()
+
+    #获取事件
+    def getEvent(self):
+        eventList = pygame.event.get()
+
+        #遍历事件
+        for event in eventList:
+            #判断按下的按钮
+            #如果按下的是退出，关闭窗口
+            if event.type == pygame.QUIT:
+                self.endGame()
+
+            if event.type == pygame.KEYDOWN:
+                #判断按下的是上、下、左、右
+                if event.type == pygame.K_LEFT:
+                    print('按下左键')
+
+                elif event.type == pygame.K_RIGHT:
+                    print('按下右键')
+
+                elif event.type == pygame.K_UP:
+                    print('按下上建')
+                elif event.type == pygame.K_DOWN:
+                    print('按下下减')
+
+
+
+
+
 
 #坦克类
 class Tank():
