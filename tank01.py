@@ -25,6 +25,7 @@ import pygame
 SCREEN_WIDTH = 700
 SCREEN_HEIGHT = 650
 BG_COLOR = pygame.Color(0,0,0)
+TEXT_COLOR = pygame.Color(255,0,0)
 
 class MainGame():
     window = None
@@ -39,12 +40,15 @@ class MainGame():
         #设置窗体大小
         MainGame.window = pygame.display.set_mode([SCREEN_WIDTH,SCREEN_HEIGHT])
 
+
         #设置窗口的标题
         pygame.display.set_caption("我的世界1.0")
         while True:
             #给窗口背景设置填充色
             MainGame.window.fill(BG_COLOR)
             self.getEvent()
+            #绘制文字
+            MainGame.window.blit(self.getTextSuface('敌方坦克剩余数量%d'%6),(10,10))
             pygame.display.update()
 
 
@@ -53,6 +57,18 @@ class MainGame():
     def endGame(self):
         print('谢谢使用')
         exit()
+
+    def getTextSuface(self,text):
+        #初始化字体模块
+        pygame.font.init()
+        #查看所有字体名称
+        print(pygame.font.get_fonts())
+        #获取字体Font对象
+        font = pygame.font.SysFont('kaiti',18)
+        textSurface = font.render(text,True,TEXT_COLOR)
+        return textSurface
+
+
 
     #获取事件
     def getEvent(self):
