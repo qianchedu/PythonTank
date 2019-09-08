@@ -20,15 +20,31 @@
 6.主类
 
 """
+import pygame
 
+SCREEN_WIDTH = 700
+SCREEN_HEIGHT = 650
+BG_COLOR = pygame.Color(0,0,0)
 
 class MainGame():
+    window = None
     def __init__(self):
         pass
 
     #开始游戏
     def startGame(self):
-        pass
+        #加载主窗口
+        #初始化窗口
+        pygame.display.init()
+        #设置窗体大小
+        MainGame.window = pygame.display.set_mode([SCREEN_WIDTH,SCREEN_HEIGHT])
+
+        #设置窗口的标题
+        pygame.display.set_caption("我的世界1.0")
+        while True:
+            #给窗口背景设置填充色
+            MainGame.window.fill(BG_COLOR)
+            pygame.display.update()
 
 
     #结束游戏
@@ -91,6 +107,7 @@ class Wall():
         pass
 
 
+#爆炸效果
 class Explode():
     def __init__(self):
         pass
@@ -99,8 +116,16 @@ class Explode():
         pass
 
 
+#音乐
 class Music():
     def __init__(self):
         pass
 
-    def
+    #播放音乐
+    def play(self):
+        pass
+
+
+
+if __name__ == '__main__':
+    MainGame().startGame()
